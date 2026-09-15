@@ -184,18 +184,23 @@ button {
 .frame-caption {
   margin-top: 12px;
   padding: 0 2px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  white-space: nowrap;
 }
 
 .frame-index {
-  font-size: 11px;
+  flex: 0 0 auto;
+  font-size: 13px;
   color: var(--muted);
   letter-spacing: 0.04em;
 }
 
 .frame-title {
-  margin-top: 2px;
+  min-width: 0;
   font-size: 13px;
-  font-weight: 510;
+  font-weight: 400;
   color: var(--text);
 }
 
