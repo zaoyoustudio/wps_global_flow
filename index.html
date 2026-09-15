@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WPS 界面流程</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <aside class="sidebar" id="sidebar">
+      <header class="brand">
+        <div class="brand-kicker">WPS</div>
+        <div class="brand-title">界面流程</div>
+      </header>
+      <nav class="nav" id="nav" aria-label="流程列表"></nav>
+    </aside>
+
+    <main class="main">
+      <header class="stage-header">
+        <div>
+          <h1 id="flow-title">选择一条流程</h1>
+          <p class="stage-meta" id="flow-meta"></p>
+          <p class="issue-line" id="flow-tags"></p>
+        </div>
+      </header>
+      <section class="filmstrip" id="filmstrip" aria-label="界面流程"></section>
+    </main>
+
+    <div class="lightbox" id="lightbox" hidden>
+      <div class="lightbox-scrim" data-close="true"></div>
+      <header class="lightbox-bar">
+        <button class="icon-btn" id="btn-close" type="button" aria-label="关闭">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.5 6.5l11 11M17.5 6.5l-11 11" />
+          </svg>
+        </button>
+        <div class="lightbox-caption">
+          <div id="lightbox-title"></div>
+          <div class="lightbox-index" id="lightbox-index"></div>
+        </div>
+        <div class="lightbox-actions">
+          <button class="text-btn" id="btn-copy" type="button">复制</button>
+          <button class="text-btn" id="btn-save" type="button">另存为</button>
+        </div>
+      </header>
+      <button class="nav-arrow prev" id="btn-prev" type="button" aria-label="上一张">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M14.5 5.5L8 12l6.5 6.5" />
+        </svg>
+      </button>
+      <figure class="lightbox-figure">
+        <img id="lightbox-image" alt="" />
+      </figure>
+      <button class="nav-arrow next" id="btn-next" type="button" aria-label="下一张">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9.5 5.5L16 12l-6.5 6.5" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="toast" id="toast" hidden></div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
