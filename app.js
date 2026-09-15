@@ -21,7 +21,7 @@
     frameIndex: 0,
     lightboxOpen: false,
     toastTimer: 0,
-    snapTimer: 0,
+    stickToStart: true,
   };
 
   function currentFlow() {
@@ -125,19 +125,35 @@
           ${connector}`;
       })
       .join("");
+    state.stickToStart = true;
     stripEl.scrollLeft = 0;
     bindStripOverflow();
   }
 
+  function stripVisibleBounds() {
+    const rect = stripEl.getBoundingClientRect();
+    const style = getComputedStyle(stripEl);
+    return {
+      left: rect.left + parseFloat(style.paddingLeft),
+      right: rect.right - parseFloat(style.paddingRight),
+    };
+  }
+
   function stripAtStart() {
-    return stripEl.scrollLeft <= 2;
+    const first = stripEl.querySelector(".frame");
+    if (!first) return true;
+    return first.getBoundingClientRect().left >= stripVisibleBounds().left - 2;
   }
 
   function stripAtEnd() {
-    return stripEl.scrollLeft >= stripEl.scrollWidth - stripEl.clientWidth - 2;
+    const frames = stripEl.querySelectorAll(".frame");
+    const last = frames[frames.length - 1];
+    if (!last) return true;
+    return last.getBoundingClientRect().right <= stripVisibleBounds().right + 2;
   }
 
   function updateStripArrows() {
+    if (state.stickToStart) stripEl.scrollLeft = 0;
     const overflow = stripEl.scrollWidth > stripEl.clientWidth + 2;
     const atStart = stripAtStart();
     const atEnd = overflow && stripAtEnd();
@@ -151,15 +167,6 @@
       if (!img.complete) img.addEventListener("load", updateStripArrows, { once: true });
     });
     requestAnimationFrame(updateStripArrows);
-  }
-
-  function stripVisibleBounds() {
-    const rect = stripEl.getBoundingClientRect();
-    const style = getComputedStyle(stripEl);
-    return {
-      left: rect.left + parseFloat(style.paddingLeft),
-      right: rect.right - parseFloat(style.paddingRight),
-    };
   }
 
   function scrollStrip(direction) {
@@ -184,20 +191,17 @@
         : direction > 0
           ? box.right - visible.right
           : box.left - visible.left;
+    state.stickToStart = false;
     animateStripScroll(delta);
   }
 
   function animateStripScroll(delta, absolute) {
-    stripEl.style.scrollSnapType = "none";
     if (absolute) stripEl.scrollTo({ left: delta, behavior: "smooth" });
     else stripEl.scrollBy({ left: delta, behavior: "smooth" });
-    window.clearTimeout(state.snapTimer);
-    state.snapTimer = window.setTimeout(() => {
-      stripEl.style.scrollSnapType = "";
-    }, 450);
   }
 
   function restartStrip() {
+    state.stickToStart = true;
     animateStripScroll(0, true);
   }
 
@@ -303,6 +307,7 @@
     (event) => {
       if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
       event.preventDefault();
+      state.stickToStart = false;
       stripEl.scrollLeft += event.deltaY;
     },
     { passive: false }
