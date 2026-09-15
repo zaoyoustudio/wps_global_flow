@@ -130,6 +130,24 @@ button {
   height: 100vh;
 }
 
+.stage-body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.filmstrip {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 12px 56px 40px;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+}
+
 .stage-header {
   padding: 28px 36px 8px;
   flex: 0 0 auto;
@@ -146,18 +164,6 @@ button {
   margin: 6px 0 0;
   font-size: 13px;
   color: var(--muted);
-}
-
-.filmstrip {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 12px 36px 40px;
-  scroll-snap-type: x proximity;
-  scrollbar-width: thin;
 }
 
 .frame {
@@ -367,6 +373,46 @@ button {
   background: rgba(29, 29, 31, 0.88);
   color: #f5f5f7;
   font-size: 13px;
+}
+
+.strip-arrow {
+  position: absolute;
+  top: calc(50% - 24px);
+  z-index: 3;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--text);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.strip-arrow.prev {
+  left: 12px;
+}
+
+.strip-arrow.next {
+  right: 12px;
+}
+
+.strip-arrow:hover {
+  background: #f2f2f4;
+}
+
+.strip-arrow[hidden] {
+  display: none;
+}
+
+.strip-arrow svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .toast[hidden] {

@@ -11,6 +11,8 @@
   const lightboxIndex = document.getElementById("lightbox-index");
   const btnPrev = document.getElementById("btn-prev");
   const btnNext = document.getElementById("btn-next");
+  const btnStripPrev = document.getElementById("btn-strip-prev");
+  const btnStripNext = document.getElementById("btn-strip-next");
   const toastEl = document.getElementById("toast");
 
   const state = {
@@ -18,6 +20,7 @@
     frameIndex: 0,
     lightboxOpen: false,
     toastTimer: 0,
+    snapTimer: 0,
   };
 
   function currentFlow() {
@@ -94,7 +97,6 @@
     const issues = issueLine(flow);
     tagsEl.textContent = issues;
     tagsEl.hidden = !issues;
-    stripEl.scrollLeft = 0;
     stripEl.innerHTML = flow.frames
       .map((frame, index) => {
         const connector =
@@ -122,6 +124,62 @@
           ${connector}`;
       })
       .join("");
+    stripEl.scrollLeft = 0;
+    bindStripOverflow();
+  }
+
+  function updateStripArrows() {
+    const overflow = stripEl.scrollWidth > stripEl.clientWidth + 2;
+    const maxScroll = stripEl.scrollWidth - stripEl.clientWidth;
+    const left = stripEl.scrollLeft;
+    btnStripPrev.hidden = !overflow || left <= 2;
+    btnStripNext.hidden = !overflow || left >= maxScroll - 2;
+  }
+
+  function bindStripOverflow() {
+    stripEl.querySelectorAll("img").forEach((img) => {
+      if (!img.complete) img.addEventListener("load", updateStripArrows, { once: true });
+    });
+    requestAnimationFrame(updateStripArrows);
+  }
+
+  function stripVisibleBounds() {
+    const rect = stripEl.getBoundingClientRect();
+    const style = getComputedStyle(stripEl);
+    return {
+      left: rect.left + parseFloat(style.paddingLeft),
+      right: rect.right - parseFloat(style.paddingRight),
+    };
+  }
+
+  function scrollStrip(direction) {
+    const frames = [...stripEl.querySelectorAll(".frame")];
+    if (!frames.length) return;
+    const visible = stripVisibleBounds();
+    const viewWidth = visible.right - visible.left;
+    const slack = 4;
+
+    const target =
+      direction > 0
+        ? frames.find((frame) => frame.getBoundingClientRect().right > visible.right + slack)
+        : [...frames].reverse().find((frame) => frame.getBoundingClientRect().left < visible.left - slack);
+    if (!target) return;
+
+    const box = target.getBoundingClientRect();
+    const delta =
+      box.width > viewWidth
+        ? direction > 0
+          ? box.left - visible.left
+          : box.right - visible.right
+        : direction > 0
+          ? box.right - visible.right
+          : box.left - visible.left;
+    stripEl.style.scrollSnapType = "none";
+    stripEl.scrollBy({ left: delta, behavior: "smooth" });
+    window.clearTimeout(state.snapTimer);
+    state.snapTimer = window.setTimeout(() => {
+      stripEl.style.scrollSnapType = "";
+    }, 450);
   }
 
   function selectFlow(id, updateHash = true) {
@@ -237,14 +295,23 @@
   document.getElementById("btn-close").addEventListener("click", closeLightbox);
   btnPrev.addEventListener("click", () => stepLightbox(-1));
   btnNext.addEventListener("click", () => stepLightbox(1));
+  btnStripPrev.addEventListener("click", () => scrollStrip(-1));
+  btnStripNext.addEventListener("click", () => scrollStrip(1));
+  stripEl.addEventListener("scroll", updateStripArrows, { passive: true });
+  window.addEventListener("resize", updateStripArrows);
   document.getElementById("btn-copy").addEventListener("click", copyCurrent);
   document.getElementById("btn-save").addEventListener("click", saveCurrent);
 
   document.addEventListener("keydown", (event) => {
-    if (!state.lightboxOpen) return;
-    if (event.key === "Escape") closeLightbox();
-    if (event.key === "ArrowLeft") stepLightbox(-1);
-    if (event.key === "ArrowRight") stepLightbox(1);
+    if (event.key === "Escape" && state.lightboxOpen) closeLightbox();
+    if (event.key === "ArrowLeft") {
+      if (state.lightboxOpen) stepLightbox(-1);
+      else if (!btnStripPrev.hidden) scrollStrip(-1);
+    }
+    if (event.key === "ArrowRight") {
+      if (state.lightboxOpen) stepLightbox(1);
+      else if (!btnStripNext.hidden) scrollStrip(1);
+    }
   });
 
   window.addEventListener("hashchange", () => {

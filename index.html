@@ -23,7 +23,19 @@
           <p class="issue-line" id="flow-tags"></p>
         </div>
       </header>
-      <section class="filmstrip" id="filmstrip" aria-label="界面流程"></section>
+      <div class="stage-body">
+        <button class="strip-arrow prev" id="btn-strip-prev" type="button" aria-label="向左滚动" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14.5 5.5L8 12l6.5 6.5" />
+          </svg>
+        </button>
+        <section class="filmstrip" id="filmstrip" aria-label="界面流程"></section>
+        <button class="strip-arrow next" id="btn-strip-next" type="button" aria-label="向右滚动" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9.5 5.5L16 12l-6.5 6.5" />
+          </svg>
+        </button>
+      </div>
     </main>
 
     <div class="lightbox" id="lightbox" hidden>
