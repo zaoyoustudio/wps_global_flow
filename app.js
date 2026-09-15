@@ -13,6 +13,7 @@
   const btnNext = document.getElementById("btn-next");
   const btnStripPrev = document.getElementById("btn-strip-prev");
   const btnStripNext = document.getElementById("btn-strip-next");
+  const btnStripRestart = document.getElementById("btn-strip-restart");
   const toastEl = document.getElementById("toast");
 
   const state = {
@@ -128,12 +129,21 @@
     bindStripOverflow();
   }
 
+  function stripAtStart() {
+    return stripEl.scrollLeft <= 2;
+  }
+
+  function stripAtEnd() {
+    return stripEl.scrollLeft >= stripEl.scrollWidth - stripEl.clientWidth - 2;
+  }
+
   function updateStripArrows() {
     const overflow = stripEl.scrollWidth > stripEl.clientWidth + 2;
-    const maxScroll = stripEl.scrollWidth - stripEl.clientWidth;
-    const left = stripEl.scrollLeft;
-    btnStripPrev.hidden = !overflow || left <= 2;
-    btnStripNext.hidden = !overflow || left >= maxScroll - 2;
+    const atStart = stripAtStart();
+    const atEnd = overflow && stripAtEnd();
+    btnStripPrev.hidden = !overflow || atStart;
+    btnStripNext.hidden = !overflow || atEnd;
+    btnStripRestart.hidden = !atEnd;
   }
 
   function bindStripOverflow() {
@@ -174,12 +184,21 @@
         : direction > 0
           ? box.right - visible.right
           : box.left - visible.left;
+    animateStripScroll(delta);
+  }
+
+  function animateStripScroll(delta, absolute) {
     stripEl.style.scrollSnapType = "none";
-    stripEl.scrollBy({ left: delta, behavior: "smooth" });
+    if (absolute) stripEl.scrollTo({ left: delta, behavior: "smooth" });
+    else stripEl.scrollBy({ left: delta, behavior: "smooth" });
     window.clearTimeout(state.snapTimer);
     state.snapTimer = window.setTimeout(() => {
       stripEl.style.scrollSnapType = "";
     }, 450);
+  }
+
+  function restartStrip() {
+    animateStripScroll(0, true);
   }
 
   function selectFlow(id, updateHash = true) {
@@ -297,6 +316,7 @@
   btnNext.addEventListener("click", () => stepLightbox(1));
   btnStripPrev.addEventListener("click", () => scrollStrip(-1));
   btnStripNext.addEventListener("click", () => scrollStrip(1));
+  btnStripRestart.addEventListener("click", restartStrip);
   stripEl.addEventListener("scroll", updateStripArrows, { passive: true });
   window.addEventListener("resize", updateStripArrows);
   document.getElementById("btn-copy").addEventListener("click", copyCurrent);
@@ -310,6 +330,7 @@
     }
     if (event.key === "ArrowRight") {
       if (state.lightboxOpen) stepLightbox(1);
+      else if (!btnStripRestart.hidden) restartStrip();
       else if (!btnStripNext.hidden) scrollStrip(1);
     }
   });
