@@ -109,7 +109,9 @@
               class="shot"
               src="${frame.src}"
               alt="${frame.title}"
-              loading="${index < 3 ? "eager" : "lazy"}"
+              loading="${index < 2 ? "eager" : "lazy"}"
+              decoding="async"
+              ${index === 0 ? 'fetchpriority="high"' : ""}
               data-index="${index}"
             />
             <div class="frame-caption">

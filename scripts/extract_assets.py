@@ -11,9 +11,13 @@ from collections import defaultdict
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
+from PIL import Image
+
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 DATA_JS = ROOT / "data.js"
+MAX_IMAGE_SIDE = 1920
+WEBP_QUALITY = 78
 
 WORD_EXTRACT = Path("/Users/wps/Downloads/未注册用户使用PDF提取文字.docx")
 WORD_OPEN = Path("/Users/wps/Downloads/未注册用户打开PDF.docx")
@@ -202,6 +206,23 @@ FLOW_ISSUES = {
 DISPIMG_RE = re.compile(r'DISPIMG\("([^"]+)"')
 
 
+def optimize_image(src: Path) -> Path:
+    dest = src.with_suffix(".webp")
+    with Image.open(src) as im:
+        rgb = im.convert("RGB")
+        width, height = rgb.size
+        scale = min(1.0, MAX_IMAGE_SIDE / max(width, height))
+        if scale < 1:
+            rgb = rgb.resize(
+                (round(width * scale), round(height * scale)),
+                Image.Resampling.LANCZOS,
+            )
+        rgb.save(dest, "WEBP", quality=WEBP_QUALITY, method=6)
+    if dest.resolve() != src.resolve():
+        src.unlink(missing_ok=True)
+    return dest
+
+
 def colrow(ref: str) -> tuple[str, int]:
     col = ""
     row = ""
@@ -274,7 +295,7 @@ def extract_word_images(docx: Path, dest: Path) -> list[Path]:
             ext = Path(name).suffix.lower() or ".png"
             out = dest / f"{i:02d}{ext}"
             out.write_bytes(z.read(name))
-            written.append(out)
+            written.append(optimize_image(out))
     return written
 
 
@@ -335,12 +356,13 @@ def extract_excel_flows() -> list[dict]:
                     img_index += 1
                     out = dest / f"{img_index:02d}{ext}"
                     out.write_bytes(z.read(media_name))
+                    out = optimize_image(out)
                     title = step_title if total == 1 else f"{step_title} {shot_i}/{total}"
                     frames.append(
                         {
                             "title": title,
                             "src": str(out.relative_to(ROOT)).replace("\\", "/"),
-                            "fileName": f"{title}{ext}",
+                            "fileName": f"{title}{out.suffix.lower()}",
                         }
                     )
             if not frames:
