@@ -593,6 +593,489 @@ window.FLOWS = [
     ]
   },
   {
+    "id": "win-ai-write-payment",
+    "platform": "Windows",
+    "title": "AI 伴写与付费",
+    "issues": [
+      "付费后需手动开启"
+    ],
+    "sourceDocument": "AI伴写_Win.docx",
+    "frames": [
+      {
+        "title": "进入伴写功能",
+        "src": "assets/windows/ai-write-payment/01.webp",
+        "fileName": "进入伴写功能.webp"
+      },
+      {
+        "title": "试用伴写",
+        "src": "assets/windows/ai-write-payment/02.webp",
+        "fileName": "试用伴写.webp"
+      },
+      {
+        "title": "选择套餐",
+        "src": "assets/windows/ai-write-payment/03.webp",
+        "fileName": "选择套餐.webp"
+      },
+      {
+        "title": "选择支付方式",
+        "src": "assets/windows/ai-write-payment/04.webp",
+        "fileName": "选择支付方式.webp"
+      },
+      {
+        "title": "外部跳转支付",
+        "src": "assets/windows/ai-write-payment/05.webp",
+        "fileName": "外部跳转支付.webp"
+      },
+      {
+        "title": "支付成功 1/2",
+        "src": "assets/windows/ai-write-payment/06.webp",
+        "fileName": "支付成功 1/2.webp"
+      },
+      {
+        "title": "支付成功 2/2",
+        "src": "assets/windows/ai-write-payment/07.webp",
+        "fileName": "支付成功 2/2.webp"
+      },
+      {
+        "title": "返回WPS",
+        "src": "assets/windows/ai-write-payment/08.webp",
+        "fileName": "返回WPS.webp"
+      },
+      {
+        "title": "关闭支付成功弹窗，伴写功能依旧是关闭的，需要手动开启 1/2",
+        "src": "assets/windows/ai-write-payment/09.webp",
+        "fileName": "关闭支付成功弹窗，伴写功能依旧是关闭的，需要手动开启 1/2.webp"
+      },
+      {
+        "title": "关闭支付成功弹窗，伴写功能依旧是关闭的，需要手动开启 2/2",
+        "src": "assets/windows/ai-write-payment/10.webp",
+        "fileName": "关闭支付成功弹窗，伴写功能依旧是关闭的，需要手动开启 2/2.webp"
+      }
+    ]
+  },
+  {
+    "id": "win-ai-continue-payment",
+    "platform": "Windows",
+    "title": "AI 续写与付费",
+    "issues": [
+      "无法跳回 WPS",
+      "任务上下文丢失"
+    ],
+    "sourceDocument": "AI续写_Win.docx",
+    "frames": [
+      {
+        "title": "点击续写，续写生成完成",
+        "src": "assets/windows/ai-continue-payment/01.webp",
+        "fileName": "点击续写，续写生成完成.webp"
+      },
+      {
+        "title": "点击插入",
+        "src": "assets/windows/ai-continue-payment/02.webp",
+        "fileName": "点击插入.webp"
+      },
+      {
+        "title": "试用次数耗尽",
+        "src": "assets/windows/ai-continue-payment/03.webp",
+        "fileName": "试用次数耗尽.webp"
+      },
+      {
+        "title": "选择套餐",
+        "src": "assets/windows/ai-continue-payment/04.webp",
+        "fileName": "选择套餐.webp"
+      },
+      {
+        "title": "选择支付方式",
+        "src": "assets/windows/ai-continue-payment/05.webp",
+        "fileName": "选择支付方式.webp"
+      },
+      {
+        "title": "跳转外部支付",
+        "src": "assets/windows/ai-continue-payment/06.webp",
+        "fileName": "跳转外部支付.webp"
+      },
+      {
+        "title": "扫码支付",
+        "src": "assets/windows/ai-continue-payment/07.webp",
+        "fileName": "扫码支付.webp"
+      },
+      {
+        "title": "支付结果加载中",
+        "src": "assets/windows/ai-continue-payment/08.webp",
+        "fileName": "支付结果加载中.webp"
+      },
+      {
+        "title": "支付成功",
+        "src": "assets/windows/ai-continue-payment/09.webp",
+        "fileName": "支付成功.webp"
+      },
+      {
+        "title": "Chrome也无法跳转wps",
+        "src": "assets/windows/ai-continue-payment/10.webp",
+        "fileName": "Chrome也无法跳转wps.webp"
+      },
+      {
+        "title": "自行回到WPS",
+        "src": "assets/windows/ai-continue-payment/11.webp",
+        "fileName": "自行回到WPS.webp"
+      },
+      {
+        "title": "关闭支付对话框，但丢失之前任务的上下文，也没有在续写模式",
+        "src": "assets/windows/ai-continue-payment/12.webp",
+        "fileName": "关闭支付对话框，但丢失之前任务的上下文，也没有在续写模式.webp"
+      },
+      {
+        "title": "自行开启续写功能，完成任务",
+        "src": "assets/windows/ai-continue-payment/13.webp",
+        "fileName": "自行开启续写功能，完成任务.webp"
+      }
+    ]
+  },
+  {
+    "id": "win-pdf-edit-payment",
+    "platform": "Windows",
+    "title": "PDF 编辑与付费",
+    "issues": [
+      "无法跳回 WPS",
+      "会员状态未同步"
+    ],
+    "sourceDocument": "PDF编辑_Win.docx",
+    "frames": [
+      {
+        "title": "使用PDF编辑",
+        "src": "assets/windows/pdf-edit-payment/01.webp",
+        "fileName": "使用PDF编辑.webp"
+      },
+      {
+        "title": "选择套餐",
+        "src": "assets/windows/pdf-edit-payment/02.webp",
+        "fileName": "选择套餐.webp"
+      },
+      {
+        "title": "选择支付方式",
+        "src": "assets/windows/pdf-edit-payment/03.webp",
+        "fileName": "选择支付方式.webp"
+      },
+      {
+        "title": "跳转外部支付",
+        "src": "assets/windows/pdf-edit-payment/04.webp",
+        "fileName": "跳转外部支付.webp"
+      },
+      {
+        "title": "中途返回WPS，看到引导外部支付的对话框",
+        "src": "assets/windows/pdf-edit-payment/05.webp",
+        "fileName": "中途返回WPS，看到引导外部支付的对话框.webp"
+      },
+      {
+        "title": "支付成功",
+        "src": "assets/windows/pdf-edit-payment/06.webp",
+        "fileName": "支付成功.webp"
+      },
+      {
+        "title": "Edge跳转不了WPS",
+        "src": "assets/windows/pdf-edit-payment/07.webp",
+        "fileName": "Edge跳转不了WPS.webp"
+      },
+      {
+        "title": "自行点开WPS，看到支付完成提示对话框",
+        "src": "assets/windows/pdf-edit-payment/08.webp",
+        "fileName": "自行点开WPS，看到支付完成提示对话框.webp"
+      },
+      {
+        "title": "关闭弹窗",
+        "src": "assets/windows/pdf-edit-payment/09.webp",
+        "fileName": "关闭弹窗.webp"
+      },
+      {
+        "title": "点击保存好像成功了，但没什么实际感受",
+        "src": "assets/windows/pdf-edit-payment/10.webp",
+        "fileName": "点击保存好像成功了，但没什么实际感受.webp"
+      },
+      {
+        "title": "补充界面：个人面板信息未即时同步开通情况",
+        "src": "assets/windows/pdf-edit-payment/11.webp",
+        "fileName": "补充界面：个人面板信息未即时同步开通情况.webp"
+      },
+      {
+        "title": "补充界面：点开Benefit界面，重点反而是Premium升级",
+        "src": "assets/windows/pdf-edit-payment/12.webp",
+        "fileName": "补充界面：点开Benefit界面，重点反而是Premium升级.webp"
+      },
+      {
+        "title": "补充界面：点开Invoice界面",
+        "src": "assets/windows/pdf-edit-payment/13.webp",
+        "fileName": "补充界面：点开Invoice界面.webp"
+      }
+    ]
+  },
+  {
+    "id": "win-pdf-to-ppt-payment",
+    "platform": "Windows",
+    "title": "PDF 转 PPT 与付费",
+    "issues": [
+      "无法跳回 WPS",
+      "会员权益感弱"
+    ],
+    "sourceDocument": "PDF转PPT_Win.docx",
+    "frames": [
+      {
+        "title": "入口",
+        "src": "assets/windows/pdf-to-ppt-payment/01.webp",
+        "fileName": "入口.webp"
+      },
+      {
+        "title": "打开功能调整参数",
+        "src": "assets/windows/pdf-to-ppt-payment/02.webp",
+        "fileName": "打开功能调整参数.webp"
+      },
+      {
+        "title": "选择套餐",
+        "src": "assets/windows/pdf-to-ppt-payment/03.webp",
+        "fileName": "选择套餐.webp"
+      },
+      {
+        "title": "选择支付方式",
+        "src": "assets/windows/pdf-to-ppt-payment/04.webp",
+        "fileName": "选择支付方式.webp"
+      },
+      {
+        "title": "跳转外部支付",
+        "src": "assets/windows/pdf-to-ppt-payment/05.webp",
+        "fileName": "跳转外部支付.webp"
+      },
+      {
+        "title": "支付加载",
+        "src": "assets/windows/pdf-to-ppt-payment/06.webp",
+        "fileName": "支付加载.webp"
+      },
+      {
+        "title": "支付成功",
+        "src": "assets/windows/pdf-to-ppt-payment/07.webp",
+        "fileName": "支付成功.webp"
+      },
+      {
+        "title": "尝试跳转，但Edge浏览器无法跳转回wps",
+        "src": "assets/windows/pdf-to-ppt-payment/08.webp",
+        "fileName": "尝试跳转，但Edge浏览器无法跳转回wps.webp"
+      },
+      {
+        "title": "自行点击点击任务栏的wps，看不到PDF转换插件对话框，就是空白的PDF页面，用户就可能以为支付有问题",
+        "src": "assets/windows/pdf-to-ppt-payment/09.webp",
+        "fileName": "自行点击点击任务栏的wps，看不到PDF转换插件对话框，就是空白的PDF页面，用户就可能以为支付有问题.webp"
+      },
+      {
+        "title": "点开插件对话框才可看见支付成功提示",
+        "src": "assets/windows/pdf-to-ppt-payment/10.webp",
+        "fileName": "点开插件对话框才可看见支付成功提示.webp"
+      },
+      {
+        "title": "关闭支付成功提示，回到转换任务对话框，视觉上没有什么区别，感受不太出来自己已经是付费会员了",
+        "src": "assets/windows/pdf-to-ppt-payment/11.webp",
+        "fileName": "关闭支付成功提示，回到转换任务对话框，视觉上没有什么区别，感受不太出来自己已经是付费会员了.webp"
+      },
+      {
+        "title": "点击转换，转换PPT成功",
+        "src": "assets/windows/pdf-to-ppt-payment/12.webp",
+        "fileName": "点击转换，转换PPT成功.webp"
+      },
+      {
+        "title": "转换成功之后反而可以选择免费选项了",
+        "src": "assets/windows/pdf-to-ppt-payment/13.webp",
+        "fileName": "转换成功之后反而可以选择免费选项了.webp"
+      }
+    ]
+  },
+  {
+    "id": "win-pdf-ocr-payment",
+    "platform": "Windows",
+    "title": "PDF 扫描件 OCR 与付费",
+    "issues": [
+      "回跳误触发下载",
+      "弹窗持续置顶"
+    ],
+    "sourceDocument": "PDF扫描件_Win.docx",
+    "frames": [
+      {
+        "title": "点击进入功能",
+        "src": "assets/windows/pdf-ocr-payment/01.webp",
+        "fileName": "点击进入功能.webp"
+      },
+      {
+        "title": "出套餐选择页",
+        "src": "assets/windows/pdf-ocr-payment/02.webp",
+        "fileName": "出套餐选择页.webp"
+      },
+      {
+        "title": "选择支付方式",
+        "src": "assets/windows/pdf-ocr-payment/03.webp",
+        "fileName": "选择支付方式.webp"
+      },
+      {
+        "title": "外部跳转支付",
+        "src": "assets/windows/pdf-ocr-payment/04.webp",
+        "fileName": "外部跳转支付.webp"
+      },
+      {
+        "title": "支付成功 1/2",
+        "src": "assets/windows/pdf-ocr-payment/05.webp",
+        "fileName": "支付成功 1/2.webp"
+      },
+      {
+        "title": "支付成功 2/2",
+        "src": "assets/windows/pdf-ocr-payment/06.webp",
+        "fileName": "支付成功 2/2.webp"
+      },
+      {
+        "title": "点击【开始使用】，没有识别到本地的WPS，反而跳转下载地址，自动下载WPS包体",
+        "src": "assets/windows/pdf-ocr-payment/07.webp",
+        "fileName": "点击【开始使用】，没有识别到本地的WPS，反而跳转下载地址，自动下载WPS包体.webp"
+      },
+      {
+        "title": "自行点击回到wps",
+        "src": "assets/windows/pdf-ocr-payment/08.webp",
+        "fileName": "自行点击回到wps.webp"
+      },
+      {
+        "title": "点击Invoice跳转新页面，OCR弹窗还置顶",
+        "src": "assets/windows/pdf-ocr-payment/09.webp",
+        "fileName": "点击Invoice跳转新页面，OCR弹窗还置顶.webp"
+      },
+      {
+        "title": "返回PDF，执行OCR功能",
+        "src": "assets/windows/pdf-ocr-payment/10.webp",
+        "fileName": "返回PDF，执行OCR功能.webp"
+      },
+      {
+        "title": "功能执行中",
+        "src": "assets/windows/pdf-ocr-payment/11.webp",
+        "fileName": "功能执行中.webp"
+      },
+      {
+        "title": "功能完成",
+        "src": "assets/windows/pdf-ocr-payment/12.webp",
+        "fileName": "功能完成.webp"
+      }
+    ]
+  },
+  {
+    "id": "win-pdf-ocr-payment-error",
+    "platform": "Windows",
+    "title": "PDF 扫描件付费报错",
+    "issues": [
+      "支付报错无兜底",
+      "支付状态未同步"
+    ],
+    "sourceDocument": "PDF扫描件报错_Win.docx",
+    "frames": [
+      {
+        "title": "点击banner入口进入功能",
+        "src": "assets/windows/pdf-ocr-payment-error/01.webp",
+        "fileName": "点击banner入口进入功能.webp"
+      },
+      {
+        "title": "出套餐选择页",
+        "src": "assets/windows/pdf-ocr-payment-error/02.webp",
+        "fileName": "出套餐选择页.webp"
+      },
+      {
+        "title": "选择支付方式",
+        "src": "assets/windows/pdf-ocr-payment-error/03.webp",
+        "fileName": "选择支付方式.webp"
+      },
+      {
+        "title": "跳转外部网页支付",
+        "src": "assets/windows/pdf-ocr-payment-error/04.webp",
+        "fileName": "跳转外部网页支付.webp"
+      },
+      {
+        "title": "出现报错，之后只能在该网页不断刷新，没有提供其他解决方案或者兜底（联系人工客服/提交工单反馈/抱歉请重新提交支付请求等）",
+        "src": "assets/windows/pdf-ocr-payment-error/05.webp",
+        "fileName": "出现报错，之后只能在该网页不断刷新，没有提供其他解决方案或者兜底（联系人工客服/提交工单反馈/抱歉请重新提交支付请求等）.webp"
+      },
+      {
+        "title": "WPS，看到引导去浏览器的弹窗，点击查看订单",
+        "src": "assets/windows/pdf-ocr-payment-error/06.webp",
+        "fileName": "WPS，看到引导去浏览器的弹窗，点击查看订单.webp"
+      },
+      {
+        "title": "订单页无订单信息",
+        "src": "assets/windows/pdf-ocr-payment-error/07.webp",
+        "fileName": "订单页无订单信息.webp"
+      },
+      {
+        "title": "关闭外部支付页，WPS的弹窗依旧显示前往浏览器完成支付",
+        "src": "assets/windows/pdf-ocr-payment-error/08.webp",
+        "fileName": "关闭外部支付页，WPS的弹窗依旧显示前往浏览器完成支付.webp"
+      }
+    ]
+  },
+  {
+    "id": "win-common-payment",
+    "platform": "Windows",
+    "title": "公共入口付费",
+    "issues": [
+      "会员权益感弱",
+      "付费后仍显示促销"
+    ],
+    "sourceDocument": "公共入口付费_Win.docx",
+    "frames": [
+      {
+        "title": "公共付费入口",
+        "src": "assets/windows/common-payment/01.webp",
+        "fileName": "公共付费入口.webp"
+      },
+      {
+        "title": "选择套餐",
+        "src": "assets/windows/common-payment/02.webp",
+        "fileName": "选择套餐.webp"
+      },
+      {
+        "title": "选择付款方式",
+        "src": "assets/windows/common-payment/03.webp",
+        "fileName": "选择付款方式.webp"
+      },
+      {
+        "title": "跳转外部支付",
+        "src": "assets/windows/common-payment/04.webp",
+        "fileName": "跳转外部支付.webp"
+      },
+      {
+        "title": "支付加载",
+        "src": "assets/windows/common-payment/05.webp",
+        "fileName": "支付加载.webp"
+      },
+      {
+        "title": "支付完成",
+        "src": "assets/windows/common-payment/06.webp",
+        "fileName": "支付完成.webp"
+      },
+      {
+        "title": "返回WPS",
+        "src": "assets/windows/common-payment/07.webp",
+        "fileName": "返回WPS.webp"
+      },
+      {
+        "title": "点查看权益",
+        "src": "assets/windows/common-payment/08.webp",
+        "fileName": "点查看权益.webp"
+      },
+      {
+        "title": "返回首页感受不到差异，折扣促销入口还在",
+        "src": "assets/windows/common-payment/09.webp",
+        "fileName": "返回首页感受不到差异，折扣促销入口还在.webp"
+      },
+      {
+        "title": "补充界面：其他 1/2",
+        "src": "assets/windows/common-payment/10.webp",
+        "fileName": "补充界面：其他 1/2.webp"
+      },
+      {
+        "title": "补充界面：其他 2/2",
+        "src": "assets/windows/common-payment/11.webp",
+        "fileName": "补充界面：其他 2/2.webp"
+      }
+    ]
+  },
+  {
     "id": "and-first-open",
     "platform": "Android",
     "title": "初次使用产品",
